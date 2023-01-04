@@ -1,36 +1,27 @@
 import React from "react";
-import Categories from "./components/categories/categories.component";
+import { Outlet, Route, Routes } from "react-router-dom";
+import Home from "./routes/home/home.component";
+import NavigationBar from "./routes/navigationBar/navigationBar.component";
+import SignInPage from "./routes/signInPage/signInPage.component";
+
+const ShopPage = () => {
+  return (
+    <div>
+      <h2>Shop Page</h2>
+    </div>
+  );
+};
 
 const App = () => {
-  const categories = [
-    {
-      id: 1,
-      title: "Hats",
-      imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
-    },
-    {
-      id: 2,
-      title: "T-shirts",
-      imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
-    },
-    {
-      id: 3,
-      title: "Sneakers",
-      imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
-    },
-    {
-      id: 4,
-      title: "Women",
-      imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
-    },
-    {
-      id: 5,
-      title: "Men",
-      imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
-    },
-  ];
-
-  return <Categories categories={categories} />;
+  return (
+    <Routes>
+      <Route path="/" element={<NavigationBar />}>
+        <Route index={true} element={<Home />} />
+        <Route path="shop" element={<ShopPage />} />
+        <Route path="sign-in" element={<SignInPage />} />
+      </Route>
+    </Routes>
+  );
 };
 
 export default App;
